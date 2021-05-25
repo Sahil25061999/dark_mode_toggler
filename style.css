@@ -1,0 +1,94 @@
+* {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  --accent_color: orangered;
+  --background_color: rgb(255, 255, 255);
+  --button_text_color: var(--background_color);
+  --animation_delay: 1s;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--background_color);
+  transition: background-color var(--animation_delay);
+}
+
+body.dark {
+  --accent_color: rgb(219, 170, 9);
+  --background_color: rgb(46, 46, 46);
+  --button_text_color: var(--background_color);
+}
+
+h2 {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.theme_toggler {
+  border-radius: 5px;
+  padding: 0.5em 1em;
+  margin: 1em 0em;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--background_color);
+  border: none;
+  background-color: var(--accent_color);
+  transform: scale(1);
+  transition: transform var(--animation_delay);
+}
+
+.theme_toggler:hover,
+.theme_toggler:focus {
+  transform: scale(1.1);
+}
+
+.svg_container {
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200vmin;
+  margin: 0;
+  position: absolute;
+  pointer-events: none;
+  transform: rotate(calc(var(--rotation) * 1deg));
+  transition: transform var(--animation_delay);
+}
+
+.dark .svg_container {
+  --rotation: 0;
+}
+
+.sun,
+.moon {
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  transition: opacity, fill var(--animation_delay);
+  fill: var(--accent_color);
+}
+
+.sun {
+  top: 5%;
+  opacity: 1;
+}
+
+.dark .sun {
+  /* opacity: 0; */
+}
+
+.moon {
+  bottom: 5%;
+  transform: rotate(180deg);
+  /* opacity: 0; */
+}
+
+.dark .moon {
+  opacity: 1;
+}
